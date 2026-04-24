@@ -1,0 +1,25 @@
+# datasets (VERY IMPORTANT)
+data/
+mel_cache/
+
+# model weights
+*.pth
+*.pt
+
+# python cache
+__pycache__/
+*.pyc
+
+# notebooks outputs
+.ipynb_checkpoints/
+
+# colab
+/content/
+
+# system files
+.DS_Store
+Thumbs.db
+
+# virtual env
+venv/
+.env/

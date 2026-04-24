@@ -1,0 +1,35 @@
+# WAVIS v2 - High Accuracy Wildlife Sound Recognition
+# Install: pip install -r requirements.txt
+
+# Deep Learning
+torch>=2.2.0
+torchaudio>=2.2.0
+torchvision>=0.17.0
+timm>=0.9.12              # EfficientNet, ViT pretrained models
+
+# Audio Processing
+librosa>=0.10.0
+soundfile>=0.12.0
+audiomentations>=0.33.0   # Heavy-duty audio augmentation
+scipy>=1.11.0
+
+# Data & ML
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+tqdm>=4.66.0
+
+# Visualization & App
+streamlit>=1.28.0
+plotly>=5.17.0
+matplotlib>=3.7.0
+Pillow>=10.0.0
+
+# Dataset download
+requests>=2.31.0
+kaggle>=1.6.0             # For BirdCLEF dataset via Kaggle API
+gdown>=4.7.3              # Google Drive downloads
+
+# Utilities
+pyyaml>=6.0
+joblib>=1.3.0

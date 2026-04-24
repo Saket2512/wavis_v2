@@ -1,0 +1,56 @@
+# WAVIS v2 Configuration — BirdCLEF 2023 Edition
+# ------------------------------------------------
+# Tuned for 264-species BirdCLEF 2023 dataset (~4GB)
+
+model:
+  backbone: "efficientnet_b3"      # efficientnet_b3 | efficientnet_b5 | vit_small_patch16_224
+  pretrained: true
+  dropout: 0.4                     # slightly higher dropout for 264 classes
+  label_smoothing: 0.05
+
+audio:
+  sample_rate: 32000               # 32kHz — BirdCLEF standard
+  duration: 5.0                    # seconds per clip
+  n_mels: 128
+  n_fft: 2048
+  hop_length: 512
+  fmin: 20
+  fmax: 16000
+  image_size: 224
+
+training:
+  epochs: 50
+  batch_size: 4                   # reduce to 16 if GPU OOM
+  learning_rate: 3.0e-4
+  weight_decay: 1.0e-4
+  warmup_epochs: 5
+  mixup_alpha: 0.4
+  cutmix_alpha: 1.0
+  num_workers: 2                   # set to 0 on Windows if you get errors
+  grad_clip: 1.0
+  amp: true                        # automatic mixed precision (GPU speedup)
+  accumulate_grad: 2
+
+augmentation:
+  time_shift_p: 0.5
+  noise_p: 0.4
+  noise_min_snr: 5
+  noise_max_snr: 20
+  gain_p: 0.5
+  gain_min_db: -6
+  gain_max_db: 6
+  time_mask_p: 0.5
+  time_mask_max: 30
+  freq_mask_p: 0.5
+  freq_mask_max: 20
+
+data:
+  val_fold: 4
+  test_fold: 5
+  min_samples_per_class: 5        # BirdCLEF 2023 has uneven species counts — keep more
+  max_samples_per_class: 500
+
+paths:
+  data_dir: "data"
+  model_dir: "models"
+  log_dir: "logs"
